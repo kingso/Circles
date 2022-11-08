@@ -22,6 +22,12 @@ jobs:
       - run:
           name: Install Dependencies
           command: go mod download
+      - run:
+          name: Clean
+          command: go clean -modcache
+      - run:
+          name: Tidy
+          command: go mod tidy
       - save_cache:
           key: go-mod-v4-{{ checksum "go.sum" }}
           paths:
